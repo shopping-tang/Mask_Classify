@@ -1,0 +1,144 @@
+layer {
+  name: "data"
+  type: "Input"
+  top: "data"
+  input_param {
+    shape {
+      dim: 1
+      dim: 3
+      dim: 112
+      dim: 112
+    }
+  }
+}
+layer {
+  name: "MASKnCLASSIFYnConv2dnconv1n15"
+  type: "Convolution"
+  bottom: "data"
+  top: "MASKnCLASSIFYnConv2dnconv1n15"
+  convolution_param {
+    num_output: 32
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    group: 1
+    stride: 2
+    dilation: 1
+  }
+}
+layer {
+  name: "MASKnCLASSIFY16"
+  type: "ReLU"
+  bottom: "MASKnCLASSIFYnConv2dnconv1n15"
+  top: "MASKnCLASSIFY16"
+}
+layer {
+  name: "MASKnCLASSIFYnConv2dnconv2n17"
+  type: "Convolution"
+  bottom: "MASKnCLASSIFY16"
+  top: "MASKnCLASSIFYnConv2dnconv2n17"
+  convolution_param {
+    num_output: 64
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    group: 1
+    stride: 2
+    dilation: 1
+  }
+}
+layer {
+  name: "MASKnCLASSIFY18"
+  type: "ReLU"
+  bottom: "MASKnCLASSIFYnConv2dnconv2n17"
+  top: "MASKnCLASSIFY18"
+}
+layer {
+  name: "MASKnCLASSIFYnConv2dnconv3n19"
+  type: "Convolution"
+  bottom: "MASKnCLASSIFY18"
+  top: "MASKnCLASSIFYnConv2dnconv3n19"
+  convolution_param {
+    num_output: 128
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    group: 1
+    stride: 2
+    dilation: 1
+  }
+}
+layer {
+  name: "MASKnCLASSIFY20"
+  type: "ReLU"
+  bottom: "MASKnCLASSIFYnConv2dnconv3n19"
+  top: "MASKnCLASSIFY20"
+}
+layer {
+  name: "MASKnCLASSIFYnConv2dnconv4n21"
+  type: "Convolution"
+  bottom: "MASKnCLASSIFY20"
+  top: "MASKnCLASSIFYnConv2dnconv4n21"
+  convolution_param {
+    num_output: 128
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    group: 1
+    stride: 2
+    dilation: 1
+  }
+}
+layer {
+  name: "MASKnCLASSIFY22"
+  type: "ReLU"
+  bottom: "MASKnCLASSIFYnConv2dnconv4n21"
+  top: "MASKnCLASSIFY22"
+}
+layer {
+  name: "MASKnCLASSIFYnConv2dnconv5n23"
+  type: "Convolution"
+  bottom: "MASKnCLASSIFY22"
+  top: "MASKnCLASSIFYnConv2dnconv5n23"
+  convolution_param {
+    num_output: 256
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    group: 1
+    stride: 2
+    dilation: 1
+  }
+}
+layer {
+  name: "MASKnCLASSIFY24"
+  type: "Flatten"
+  bottom: "MASKnCLASSIFYnConv2dnconv5n23"
+  top: "MASKnCLASSIFY24"
+}
+layer {
+  name: "MASKnCLASSIFYnLinearnfc1n25"
+  type: "InnerProduct"
+  bottom: "MASKnCLASSIFY24"
+  top: "MASKnCLASSIFYnLinearnfc1n25"
+  inner_product_param {
+    num_output: 512
+    bias_term: true
+  }
+}
+layer {
+  name: "MASKnCLASSIFY26"
+  type: "ReLU"
+  bottom: "MASKnCLASSIFYnLinearnfc1n25"
+  top: "MASKnCLASSIFY26"
+}
+layer {
+  name: "MASKnCLASSIFYnLinearnfc2n27"
+  type: "InnerProduct"
+  bottom: "MASKnCLASSIFY26"
+  top: "MASKnCLASSIFYnLinearnfc2n27"
+  inner_product_param {
+    num_output: 2
+    bias_term: true
+  }
+}
